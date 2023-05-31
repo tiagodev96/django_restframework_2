@@ -13,3 +13,8 @@ class Client(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Case(models.Model):
+    name = models.CharField(max_length=50)
+    responsible = models.ForeignKey(Client, on_delete=models.CASCADE)

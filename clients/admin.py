@@ -1,5 +1,5 @@
 from django.contrib import admin
-from clients.models import Client
+from clients.models import Client, Case
 
 
 class Clients(admin.ModelAdmin):
@@ -13,3 +13,14 @@ class Clients(admin.ModelAdmin):
 
 
 admin.site.register(Client, Clients)
+
+
+class Cases(admin.ModelAdmin):
+    list_display = ("id", "name")
+    list_display_links = ("id", "name")
+    search_fields = ("name",)
+    list_per_page = 10
+    ordering = ("name",)
+
+
+admin.site.register(Case, Cases)

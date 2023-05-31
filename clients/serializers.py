@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from clients.models import Client
+from clients.models import Client, Case
 from clients.validators import *
 
 
@@ -24,3 +24,11 @@ class ClientSerializer(serializers.ModelSerializer):
                 }
             )
         return data
+
+
+class CaseSerializer(serializers.ModelSerializer):
+    responsible = serializers.ReadOnlyField(source="responsible.name")
+
+    class Meta:
+        model = Case
+        fields = ["name", "responsible"]
